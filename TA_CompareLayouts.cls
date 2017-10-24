@@ -119,19 +119,14 @@ global with sharing class TA_CompareLayouts {
         return properties;
     }
     
-    //This method is just being used to pull the session id of the target org 
-    //however we never recommand to store the password in Salesforce. You can use the oauth to get the sessionId     
     private static String getTargetSessionId() {
-    	
-    	//Get the application settings
-    	Application_Settings__c appSettings = Application_Settings__c.getOrgDefaults();
-    	    
+        
         String loginEnvelope = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"'
                                 + '  xmlns:urn="urn:partner.soap.sforce.com">'
                                 + '  <soapenv:Body>'
                                 + '    <urn:login>'
-                                + '      <urn:username>' + appSettings.Target_Org_UserName__c + '</urn:username>'
-                                + '      <urn:password>' + appSettings.Target_Org_Password__c + appSettings.Target_Org_Security_Token__c + '</urn:password>'
+                                + '      <urn:username>session2@dreamforce.demo</urn:username>'
+                                + '      <urn:password>dreamforce.demo5</urn:password>'
                                 + '    </urn:login>'
                                 + '  </soapenv:Body>'
                                 + '</soapenv:Envelope>';
